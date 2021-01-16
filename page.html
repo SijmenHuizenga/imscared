@@ -15,6 +15,11 @@
             text-align: center;
             line-height: 100vh;
             cursor: pointer;
+
+            -webkit-user-select: none;  /* Chrome 49+ */
+            -moz-user-select: none;     /* Firefox 43+ */
+            -ms-user-select: none;      /* No support yet */
+            user-select: none;          /* Likely future */
         }
     </style>
 </head>
@@ -41,15 +46,23 @@ Go away
 <script>
     var pageWantsToClose = true;
     var mouseDown = 0;
-    document.body.onmousedown = function() {
+
+    function mousePress() {
         ++mouseDown;
     }
-    document.body.onmouseup = function() {
+    function mouseRelease() {
         --mouseDown;
         if(pageWantsToClose && mouseDown === 0) {
             window.close();
         }
     }
+
+    // mouse devices
+    document.body.onmousedown = mousePress
+    document.body.onmouseup = mouseRelease
+    // touch devices
+    document.body.ontouchstart = mousePress
+    document.body.ontouchend = mouseRelease
 
     setTimeout(function () {
         if(!mouseDown) {
@@ -176,7 +189,9 @@ Go away
     }
 
     function showPage() {
-        document.body.innerHTML = "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ?controls=0&autoplay=1\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
+        document.body.innerHTML = "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ?controls=0&autoplay=1\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>" +
+            "<div style='width: 100%; height: 100%; position: absolute; left: 0; top: 0'></div>";
+        document.body.onclick = e => e.preventDefault();
     }
 
 </script>
