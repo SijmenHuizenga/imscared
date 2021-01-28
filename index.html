@@ -29,8 +29,17 @@
 </head>
 
 <body>
-<button onclick="window.open('page.html')">Click here to visit the page</button>
+<button id="button">Click here to visit the page</button>
 
 <p>Built on <a href="https://github.com/SijmenHuizenga/imscared">Github</a> by <a href="https://sijmenhuizenga.nl">Sijmen</a></p>
+
+<script>
+    let button = document.getElementById("button");
+    let clickCount = 0;
+    button.onclick = function () {
+        clickCount++;
+        window.open('page.html');
+    }
+</script>
 </body>
 </html>
