@@ -14,9 +14,11 @@
             margin: 0;
             padding: 0;
             height: 100vh;
-            text-align: center;
-            line-height: 100vh;
-            cursor: pointer;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
         }
         p {
             position: absolute;
@@ -25,20 +27,51 @@
             height: 25px;
             line-height: 25px;
         }
+        span {
+            padding: 15px;
+            width: 400px;
+        }
     </style>
 </head>
 
 <body>
 <button id="button">Click here to visit the page</button>
-
+<span id="hint">&nbsp;</span>
 <p>Built on <a href="https://github.com/SijmenHuizenga/imscared">Github</a> by <a href="https://sijmenhuizenga.nl">Sijmen</a></p>
 
 <script>
     let button = document.getElementById("button");
+    let hint = document.getElementById("hint");
     let clickCount = 0;
     button.onclick = function () {
         clickCount++;
         window.open('page.html');
+        if(clickCount === 2) {
+            runScript();
+        }
+    }
+
+    var script = [
+        ["Sigh...", 2000],
+        ["Is it doing that thing again where it runs away?", 3000],
+        ["It has some ", 400],
+        ["It has some .", 500],
+        ["It has some ..", 650],
+        ["It has some ...", 700],
+        ["It has some ... ugh", 3000],
+        ["Let's say it had some bad experiences", 5000],
+        ["&nbsp;", 3000],
+        ["Maybe just better to leave it alone", 5000],
+        ["&nbsp;", 2000],
+        ["If you really want to see it, grab it and hold on tight"],
+    ];
+    function runScript() {
+        let [action, timeout] = script.shift();
+        if((typeof action) === "string") {
+            hint.innerHTML = action;
+        }
+        if(script.length > 0)
+            currentTimeout = setTimeout(runScript, timeout)
     }
 </script>
 </body>
