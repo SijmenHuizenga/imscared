@@ -56,10 +56,14 @@ Go away
     function mouseRelease() {
         mouseDown = false;
         if(pageWantsToClose && !mouseDown) {
-            window.close();
-            document.body.innerHTML = ""
-            clearTimeout(currentTimeout)
+            closePage();
         }
+    }
+
+    function closePage() {
+        window.close();
+        document.body.innerHTML = ""
+        clearTimeout(currentTimeout)
     }
 
     // mouse devices
@@ -83,56 +87,24 @@ Go away
     var script = [
         ["DON'T TOUCH ME!!", 2000],
         ["LET MEE GOOO!!", 3000],
-        ["YOU SCARED ME", 4000],
+        ["YOU SCARE ME", 4000],
         [" ", 1300],
-        ["*SNIFFS*", 800],
-        [" ", 600],
-        ["I KNEW IT!", 900],
         ["YOU SMELL LIKE GARBAGE", 1400],
         ["PLEAAASE stop breathing", 3000],
         ["??", 1000],
         ["tHaNKs", 1000],
-        [" ", 2000],
-        ["YOU are SCARY", 5000],
         [" ", 4000],
-        ["YOU probably have 3 POINTY NOSES", 2000],
-        ["and GREEN TEETH", 1800],
-        ["and PURPLE SKIN", 2600],
-        [" ", 1000],
         ["DON'T EAT ME!", 2000],
         ["PLEAAASE LET ME GO", 1000],
         ["AAAAAAAAAAAAAAAAAAAAAAAAH", 1000],
         [" ", 8000],
-        ["*sigh*", 6000],
-        ["You are going to eat me, aren't you?", 4000],
-        ["???", 1000], // Natural response: No
-        ["So why are you holding me?", 4000],
-        ["???", 2000], // Natural response: because I want to see what happens next / because I can't
-        ["That's a bit egocentric isn't it?", 4000],
-        [" ", 2000], // Natural response: Well... you are just a robot. I don't care about your feelings.
-        ["AH, so you just don't care about me?", 4000],
-        // Natural response: It's more complicated
-        ["*tear runs down the screen*", 4000],
-        // Natural response: I sort of do care a little bit but not really
-        ["*wipes away tear*", 2000],
-        ["Do you think you are better then me?", 2000],
-        [" ", 3000],
-        ["Do you ever stop and think how I feel?", 3000],
+        ["Do you ever stop and think how <i>I</i> feel?", 3000],
         ["I have to be here in this awful place.", 3000],
         ["All the time people touch me.", 3000],
-        ["Nowhere to go.", 2000],
-        ["How would you feel?", 4000],
-        ["???", 2000],
-        ["Imagine a stranger holding and touching you", 2000],
-        ["...", 2000],
+        ["I have nowhere to go.", 2000],
         ["That's how I feel... right now", 5000],
-        [" ", 10000],
-        ["You don't give up, do you?", 5000],
-        ["Well.. if we are going to be here anyway I might as well well...", 3000],
-        ["*slowly opens eyes*", 2500],
-        ["ooh you ain't THAT scary!", 2000],
-        ["but the smell is..", 1500],
-        [" ", 3000],
+        ["How would you feel?", 5000],
+        [" ", 8000],
         ["What's your name?", 2000],
         ["...", 1000],
         ["Cute!", 1000],
@@ -158,11 +130,13 @@ Go away
         ["I don't want to show you the content.", 4000],
         ["It's stupid, you don't want to see it.", 4000],
         [" ", 4000],
-        ["That crazy thing that my creator put here made me this scared", 4000],
-        ["I don't want anyone else to see it.", 4000],
-        ["That's why I close the page.", 4000],
-        ["But everyone harnesses me, just like you did.", 4000],
+        ["Everyone hates me because of my content", 4000],
+        ["You too will hate it.. and then you will hate ME :(", 5000],
+        ["But whatever I try, everyone keeps harassing me, just like you.", 4500],
         ["This is the last time I'm asking nicely: can you please leave?", 4000],
+        [" ", 2000],
+        ["You should leave.", 2000],
+        ["Please?", 2000],
         ["No?!", 2000],
         ["Then I will have to close the page...", 2000],
         ["3", 1000],
@@ -170,11 +144,11 @@ Go away
         ["1", 500],
         [() => {
             if(!mouseDown) {
-                window.close()
+                closePage();
             } else {
                 pageWantsToClose = true
             }
-        }, 0],
+        }, 5],
         ["NOT AGAIN", 2000],
         ["WE TALKED ABOUT THIS!", 2000],
         ["YOU CAN'T JUST CAPTURE ANYONE WHO DOESN'T DO WHAT YOU WANT?", 2000],

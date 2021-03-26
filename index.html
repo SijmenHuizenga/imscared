@@ -20,24 +20,37 @@
             justify-content: center;
             flex-direction: column;
         }
-        p {
+        #about {
             position: absolute;
             left: 10px;
             bottom: 10px;
             height: 25px;
             line-height: 25px;
         }
-        span {
+        #hint {
             padding: 15px;
-            width: 400px;
+            text-align: center;
+            height: 100px;
+        }
+        button {
+            background-color: transparent;
+            font-size: larger;
+            border: none;
+            box-shadow: 3px 4px 11px 0px rgba(252, 0, 248, 0.42);
+            padding: 12px;
+            color: black;
+        }
+        button:hover{
+            box-shadow: 3px 4px 11px 0px rgba(252, 0, 248, 0.72);
+            cursor: pointer;
         }
     </style>
 </head>
 
 <body>
 <button id="button">Click here to visit the page</button>
-<span id="hint">&nbsp;</span>
-<p>Built on <a href="https://github.com/SijmenHuizenga/imscared">Github</a> by <a href="https://sijmenhuizenga.nl">Sijmen</a></p>
+<p id="hint">&nbsp;</p>
+<p id="about"><a href="https://github.com/SijmenHuizenga/imscared">About</a></p>
 
 <script>
     let button = document.getElementById("button");
@@ -54,16 +67,15 @@
     var script = [
         ["Sigh...", 2000],
         ["Is it doing that thing again where it runs away?", 3000],
-        ["It has some ", 400],
-        ["It has some .", 500],
-        ["It has some ..", 650],
-        ["It has some ...", 700],
-        ["It has some ... ugh", 3000],
-        ["Let's say it had some bad experiences", 5000],
-        ["&nbsp;", 3000],
-        ["Maybe just better to leave it alone", 5000],
-        ["&nbsp;", 2000],
-        ["If you really want to see it, grab it and hold on tight"],
+        ["It had some ", 400],
+        ["It had some .", 500],
+        ["It had some ..", 650],
+        ["It had some ...", 700],
+        ["bad experiences with humans", 3000],
+        ["&nbsp;", 1000],
+        ["Maybe better to leave it alone", 2000],
+        ["&nbsp;", 1000],
+        ["If you really want to view that page, grab it and hold on tight"],
     ];
     function runScript() {
         let [action, timeout] = script.shift();
